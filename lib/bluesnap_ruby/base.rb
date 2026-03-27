@@ -50,6 +50,7 @@ module BluesnapRuby
       client             = Net::HTTP.new(uri.host, uri.port)
       client.use_ssl     = true
       client.verify_mode = OpenSSL::SSL::VERIFY_PEER
+      puts "#{klass.name} #{uri.to_s}"
 
       response           = client.request(
         klass.new(uri).tap do |http|
@@ -62,6 +63,7 @@ module BluesnapRuby
         end
       )
       
+      puts response.body
       return response if response.body.blank?
 
       begin

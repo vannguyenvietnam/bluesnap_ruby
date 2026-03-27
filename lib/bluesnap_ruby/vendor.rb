@@ -3,7 +3,7 @@ module BluesnapRuby
     attr_accessor :vendor_id, :email, :name, :first_name, :last_name, :phone, :address,
                   :city, :country, :state, :zip, :tax_id, :vat_id, :vendor_url, :ipn_url, 
                   :default_payout_currency, :frequency, :delay, :vendor_principal,
-                  :vendor_agreement, :payout_info, :verification
+                  :vendor_agreement, :payout_configuration, :verification
 
     ENDPOINT = '/services/2/vendors'
 
@@ -12,7 +12,7 @@ module BluesnapRuby
     # @param [Hash] vendor_data
     # @option vendor_data [String] :email *required*
     # @option vendor_data [String] :country *required*
-    # @option vendor_data [Hash] :payout_info 
+    # @option vendor_data [Hash] :payout_configuration 
     # @return [BluesnapRuby::Vendor]
     def self.create vendor_data
       attributes = self.attributes - [:vendor_id] # fix attributes allowed by POST API
